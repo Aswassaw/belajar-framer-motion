@@ -12,7 +12,7 @@ const containerVariants = {
     x: "0px",
 
     transition: {
-      delay: 0.3,
+      delay: 0.2,
       type: "spring",
       stiffness: 90,
     },
@@ -20,11 +20,11 @@ const containerVariants = {
 };
 
 const nextVariants = {
-  hidden: { x: "-200vw" },
+  hidden: { x: "-150vw" },
   visible: {
     x: "0px",
 
-    transition: { delay: 0.3, type: "spring", stiffness: 45 },
+    transition: { delay: 0.2, type: "spring", stiffness: 45 },
   },
 };
 
