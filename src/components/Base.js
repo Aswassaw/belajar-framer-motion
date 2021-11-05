@@ -9,17 +9,22 @@ const Base = ({ addBase, pizza }) => {
     <motion.div
       className='base container'
       initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      transition={{ delay: 0.5, type: "spring", stiffness: 95 }}
+      animate={{ x: "0px" }}
+      transition={{ delay: 0.3, type: "spring", stiffness: 90 }}
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
         {bases.map((base) => {
           let spanClass = pizza.base === base ? "active" : "";
           return (
-            <li key={base} onClick={() => addBase(base)}>
+            <motion.li
+              key={base}
+              onClick={() => addBase(base)}
+              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.3, originX: 0, color: "#f8e112" }}
+            >
               <span className={spanClass}>{base}</span>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
@@ -27,12 +32,20 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <motion.div
           className='next'
-          initial={{ x: "-100vw" }}
+          initial={{ x: "-200vw" }}
           animate={{ x: "0px" }}
-          transition={{ type: "spring", stiffness: 45 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 45 }}
         >
           <Link to='/toppings'>
-            <button>Next</button>
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                textShadow: "0px 0px 8px rgb(255,255,255)",
+                boxShadow: "0px 0px 8px rgb(255,255,255)",
+              }}
+            >
+              Next
+            </motion.button>
           </Link>
         </motion.div>
       )}
