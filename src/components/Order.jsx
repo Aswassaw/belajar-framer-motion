@@ -11,6 +11,7 @@ const containerVariants = {
     x: "0px",
 
     transition: {
+      delay: 0.2,
       type: "spring",
       stiffness: 90,
       damping: 8,
@@ -21,6 +22,11 @@ const containerVariants = {
       // Mengurutkan kemunculan children sesuai waktu yang ditentukan
       staggerChildren: 0.5,
     },
+  },
+  exit: {
+    x: "-100vw",
+
+    transition: { ease: "easeInOut" },
   },
 };
 
@@ -46,6 +52,7 @@ const Order = ({ pizza }) => {
       variants={containerVariants}
       initial='hidden'
       animate='visible'
+      exit='exit'
     >
       <AnimatePresence>
         {showTitle && (
@@ -53,7 +60,7 @@ const Order = ({ pizza }) => {
             exit={{
               y: "-100vh",
             }}
-            transition={{duration: 2}}
+            transition={{ duration: 2 }}
           >
             Thank you for your order :)
           </motion.h2>

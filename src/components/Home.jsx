@@ -2,6 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+
+    transition: { delay: 0.3, duration: 1.5 },
+  },
+  exit: {
+    x: "-100vw",
+
+    transition: { duration: 1, ease: "easeInOut" },
+  },
+};
+
 const buttonVariants = {
   // visible: {
   //   x: [0, -30, 30, -30, 30, -30, 0],
@@ -11,11 +27,12 @@ const buttonVariants = {
     scale: 1.1,
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
+
     transition: {
       // Mengulangi semua animasi sebanyak yang ditentukan
       yoyo: Infinity,
       duration: 0.3,
-    }
+    },
   },
 };
 
@@ -23,11 +40,10 @@ const Home = () => {
   return (
     <motion.div
       className='home container'
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{ delay: 0.3, duration: 1.5 }}
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='exit'
     >
       <h2>Welcome to Pizza Joint</h2>
       <Link to='/base'>
