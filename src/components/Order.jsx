@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const containerVariants = {
   hidden: {
@@ -19,7 +19,7 @@ const containerVariants = {
       // Animasi children tidak akan dijalankan sebelum semua animasi di elemen berjalan
       when: "beforeChildren",
       // Mengurutkan kemunculan children sesuai waktu yang ditentukan
-      staggerChildren: .5,
+      staggerChildren: 0.5,
     },
   },
 };
@@ -34,6 +34,12 @@ const childVariants = {
 };
 
 const Order = ({ pizza }) => {
+  const [showTitle, setShowTitle] = useState(true);
+
+  setTimeout(() => {
+    setShowTitle(false);
+  }, 4000);
+
   return (
     <motion.div
       className='container order'
@@ -41,7 +47,18 @@ const Order = ({ pizza }) => {
       initial='hidden'
       animate='visible'
     >
-      <h2>Thank you for your order :)</h2>
+      <AnimatePresence>
+        {showTitle && (
+          <motion.h2
+            exit={{
+              y: "-100vh",
+            }}
+            transition={{duration: 2}}
+          >
+            Thank you for your order :)
+          </motion.h2>
+        )}
+      </AnimatePresence>
       <motion.p variants={childVariants}>
         You ordered a {pizza.base} pizza with:
       </motion.p>
