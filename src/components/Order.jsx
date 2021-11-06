@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const containerVariants = {
@@ -40,20 +40,12 @@ const childVariants = {
 };
 
 const Order = ({ pizza, setShowModal }) => {
-  const [showTitle, setShowTitle] = useState(true);
-
   useEffect(() => {
-    const exitTitle = setTimeout(() => {
-      setShowTitle(false);
-    }, 3000);
-
-    setShowModal(true);
     const setModal = setTimeout(() => {
-      setShowModal(false);
+      setShowModal(true);
     }, 5000);
 
     return () => {
-      clearTimeout(exitTitle);
       clearTimeout(setModal);
       setShowModal(false);
     };
@@ -68,16 +60,7 @@ const Order = ({ pizza, setShowModal }) => {
       exit='exit'
     >
       <AnimatePresence>
-        {showTitle && (
-          <motion.h2
-            exit={{
-              y: "-100vh",
-            }}
-            transition={{ duration: 2 }}
-          >
-            Thank you for your order :)
-          </motion.h2>
-        )}
+        <h2>Thank you for your order :)</h2>
       </AnimatePresence>
       <motion.p variants={childVariants}>
         You ordered a {pizza.base} pizza with:
