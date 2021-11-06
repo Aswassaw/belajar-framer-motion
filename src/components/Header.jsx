@@ -50,6 +50,9 @@ const Header = () => {
           initial='hidden'
           animate='visible'
           whileHover='hover'
+          drag
+          dragConstraints={{left: 0, top: 0, right: 100, bottom: 100}}
+          dragElastic={0.7}
         >
           <motion.path
             variants={pathVariants}
@@ -76,7 +79,7 @@ const Header = () => {
           stiffness: 45,
         }}
       >
-        <h1>Pizza Joint</h1>
+        <motion.h1 drag>Pizza Joint</motion.h1>
       </motion.div>
     </header>
   );
