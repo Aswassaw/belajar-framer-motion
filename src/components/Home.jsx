@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Loader from "./Loader";
 
 const containerVariants = {
   hidden: {
@@ -38,24 +39,27 @@ const buttonVariants = {
 
 const Home = () => {
   return (
-    <motion.div
-      className='home container'
-      variants={containerVariants}
-      initial='hidden'
-      animate='visible'
-      exit='exit'
-    >
-      <h2>Welcome to Pizza Joint</h2>
-      <Link to='/base'>
-        <motion.button
-          variants={buttonVariants}
-          // animate='visible'
-          whileHover='hover'
-        >
-          Create Your Pizza
-        </motion.button>
-      </Link>
-    </motion.div>
+    <>
+      <motion.div
+        className='home container'
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+        exit='exit'
+      >
+        <h2>Welcome to Pizza Joint</h2>
+        <Link to='/base'>
+          <motion.button
+            variants={buttonVariants}
+            // animate='visible'
+            whileHover='hover'
+          >
+            Create Your Pizza
+          </motion.button>
+        </Link>
+      </motion.div>
+      <Loader />
+    </>
   );
 };
 
