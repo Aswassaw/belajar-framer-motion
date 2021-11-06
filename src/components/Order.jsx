@@ -41,13 +41,14 @@ const childVariants = {
 
 const Order = ({ pizza, setShowModal }) => {
   useEffect(() => {
+    // Timeout untuk menampilkan modal
     const setModal = setTimeout(() => {
       setShowModal(true);
     }, 5000);
 
+    // Ketika component dimusnahkan dari dom
     return () => {
       clearTimeout(setModal);
-      setShowModal(false);
     };
   }, [setShowModal]);
 

@@ -31,7 +31,10 @@ function App() {
     <>
       <Header />
       <Modal showModal={showModal} setShowModal={setShowModal} />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence
+        exitBeforeEnter
+        onExitComplete={() => setShowModal(false)}
+      >
         {/* Location dan key akan membuat AnimatePresence tau kapan komponen akan berubah */}
         <Switch location={location} key={location.key}>
           <Route path='/base'>
