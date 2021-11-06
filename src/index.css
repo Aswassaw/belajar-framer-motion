@@ -146,6 +146,12 @@ li span.active::before {
   font-weight: bold;
 }
 
+.flex {
+  display: flex;
+  margin: 0 auto;
+  max-width: 100px;
+}
+
 .loader {
   width: 10px;
   height: 10px;
